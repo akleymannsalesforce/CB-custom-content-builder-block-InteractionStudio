@@ -1,0 +1,77 @@
+<html>
+
+<head>
+	
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+<style>
+ .ctstyle{
+  font-family: Verdana;
+  font-size: 14px;
+
+ }
+
+.itemlist{
+ font-size: 12px;
+}
+</style>
+
+</head>
+
+<body>
+
+<p class="ctstyle" align="center">
+Your available Interaction Studio elements will be shown here
+<br />
+
+
+ <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+
+
+	<script src="/blocksdk.js"></script>
+
+  <script>
+
+    var selectedImageId, image;
+
+function chosen(imgId) {
+  
+
+  var sdk = new window.sfdc.BlockSDK(); //initalize SDK
+  sdk.setContent(""); //resets content block
+
+  var fit = document.getElementById('scaleFit').checked;
+  var acenter = document.getElementById('alignCenter').checked;
+  
+  selectedImageId = imgId;
+
+  if(imgId != ""){
+    image = document.getElementById(imgId).src;
+  }
+
+  //alert(image); //test
+
+  if(fit){
+    sdk.setContent("<img width='100%' src='" + image + "'/>");
+
+  }else{
+        
+    if(acenter){
+        sdk.setContent("<center><img src='" + image + "'/></center>");
+      
+      }else{
+      sdk.setContent("<img src='" + image + "'/>");
+   
+    }
+  }
+}
+      
+    </script>
+</body>
+</html>
